@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="keyHandlerDemo:war exploded">
+    <output-path>$PROJECT_DIR$/keyHandlerDemo/target/keyManager</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="keyHandlerDemo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.6.2" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.6.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/keyHandlerDemo/target/keyManager/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="keyHandlerDemo/web/Web" />
+    </root>
+  </artifact>
+</component>

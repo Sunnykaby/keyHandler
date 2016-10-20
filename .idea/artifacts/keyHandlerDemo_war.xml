@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="keyHandlerDemo:war">
+    <output-path>$PROJECT_DIR$/keyHandlerDemo/target</output-path>
+    <root id="archive" name="keyManager.war">
+      <element id="artifact" artifact-name="keyHandlerDemo:war exploded" />
+    </root>
+  </artifact>
+</component>
