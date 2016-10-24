@@ -7,8 +7,9 @@ public class KeyInfo {
 	private String keyName;
 	private String keyValue;
 	private Date updateTime;
+	private String keyVersion;
 
-	public KeyInfo(String keyName, String keyValue) {
+    public KeyInfo(String keyName, String keyValue) {
 		// TODO Auto-generated constructor stub
 		this.keyName = keyName;
 		this.keyValue = keyValue;
@@ -42,6 +43,7 @@ public class KeyInfo {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-
+    public String getKeyVersion() {return keyVersion;}
+    public void setKeyVersion(String keyVersion) { this.keyVersion = keyVersion;}
 
 }
