@@ -9,5 +9,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 public interface Action {
+    /**
+     * do sth and return the show pages
+     * (here we can do more to adapt the variable kinds of response, such as map, stream and html pages)
+     * @param request
+     * @param response
+     * @return
+     *
+     */
     public String execute(HttpServletRequest request, HttpServletResponse response);
 }

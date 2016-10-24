@@ -1,5 +1,6 @@
 package com.kami.app.key.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,10 @@ public class KeyList {
 
     public KeyList(List<KeyInfo> lists) {
         this.lists = lists;
+    }
+
+    public KeyList() {
+        lists = new ArrayList<KeyInfo>();
     }
 
     public void setList(List<KeyInfo> lists){

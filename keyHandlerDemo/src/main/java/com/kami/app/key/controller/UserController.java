@@ -1,25 +1,24 @@
-package com.kami.app.key.controler;
+package com.kami.app.key.controller;
 
-import java.io.IOException;
-import java.util.Map;
+import com.kami.app.key.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.kami.app.key.service.UserService;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * Servlet implementation class UserControler
  */
-public class UserControler extends HttpServlet {
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserControler() {
+    public UserController() {
         super();
         // TODO Auto-generated constructor stub
     }
