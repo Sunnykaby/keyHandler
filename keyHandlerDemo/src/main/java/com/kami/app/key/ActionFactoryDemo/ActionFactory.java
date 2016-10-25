@@ -24,6 +24,8 @@ public class ActionFactory {
         Map defaultMap = new HashMap<String, Class>();
         //add the action
         defaultMap.put("addKey",AddKeyAction.class);
+        defaultMap.put("removeKey",RemoveKeyAction.class);
+        defaultMap.put("showKey",ShowKeyAction.class);
         //
         return defaultMap;
     }
@@ -45,7 +47,12 @@ public class ActionFactory {
     }
 
 
-
-
-
+    public String getActionName(String requestPath) {
+        if (requestPath == null || requestPath.equals("")){
+            return  null;
+        }
+        String actionName = null;
+        actionName = requestPath.substring(requestPath.indexOf('/')+1,requestPath.indexOf('.'));
+        return actionName;
+    }
 }

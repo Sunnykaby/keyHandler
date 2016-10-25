@@ -27,12 +27,17 @@ public class KeyList {
     }
 
     public boolean removeKey(String keyId){
+        long id = Long.parseLong(keyId);
         for (KeyInfo currentKey :
                 lists) {
-            if (currentKey.getKeyId().equals(keyId)){
+            if (currentKey.getKeyId() == id){
                 return  lists.remove(currentKey);
             }
         }
         return true;
+    }
+
+    public List getList(){
+        return  lists;
     }
 }
