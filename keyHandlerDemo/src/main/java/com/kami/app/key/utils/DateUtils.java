@@ -22,6 +22,20 @@ public class DateUtils {
 		Calendar calendar = Calendar.getInstance();
 		return calendar.getTime();
 	}
+
+	/**
+	  * <p>Description:获取毫秒级时间</p>
+	  * author: Kami
+	  * date: 2016/10/26 13:36
+	  * @param
+	  */
+	public static Long getCurMilliTime(){
+		//设置时区
+		TimeZone timeZone = TimeZone.getTimeZone("GMT-8");
+		TimeZone.setDefault(timeZone);
+		Calendar calendar = Calendar.getInstance();
+		return  calendar.getTimeInMillis();
+	}
 	
 	public static void main(String[] args){
 		System.err.println(DateUtils.getCurDateTime());

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 包含key的list，主要用于session中的key保存。
  * Created by shidian on 2016/10/24.
  */
-
+@Deprecated
 public class KeyList {
     private List<KeyInfo> lists;
 
