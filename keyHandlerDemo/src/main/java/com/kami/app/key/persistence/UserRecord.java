@@ -1,6 +1,8 @@
 package com.kami.app.key.persistence;
 
 import com.kami.app.key.model.KeyInfo;
+import com.kami.app.key.model.UserKeys;
+import com.kami.app.key.utils.EncodeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +24,46 @@ public class UserRecord {
     private List keys;
     private String persistenceInfo;//持久化String
 
+    private EncodeHelper encodeHelper = new EncodeHelper();
+
+    /**
+     * accroding the persistence string data to recover the userKey object
+     * @param persistenceInfo
+     */
     public UserRecord(String persistenceInfo) {
         this.persistenceInfo = persistenceInfo + "\n";
         StringTokenizer stringTokenizer =  new StringTokenizer(persistenceInfo," ");
         while (stringTokenizer.hasMoreTokens()){
-
+            this.userName = stringTokenizer.nextToken();
+            this.password = encodeHelper.decode(stringTokenizer.nextToken());
+            this.keys = createKeys(stringTokenizer.nextToken());
         }
     }
+
+    public UserRecord(UserKeys userKeys){
+        this.userName = userKeys.getUserName();
+        this.password = userKeys.getPassword();
+        this.keys = userKeys.getKeys();
+        // composite the persistence string
+        StringBuffer sb = new StringBuffer();
+        sb.append(userName).append(" ");
+        sb.append(encodeHelper.encode(password)).append(" ");
+        sb.append(createKeyString(keys));
+        this.persistenceInfo = sb.append("\n").toString();
+    }
+
+    public String createKeyString(List keys){
+        StringBuffer sb = new StringBuffer();
+        for (Object key : keys) {
+            KeyInfo keyInfo = (KeyInfo)key;
+            if (sb.length() > 0) sb.append("|");
+            sb.append(keyInfo.getKeyId()).append(",");
+            sb.append(keyInfo.getKeyName()).append(",");
+            sb.append(keyInfo.getKeyValue()).append(",");
+        }
+        return  sb.toString();
+    }
+
 
     /**
      * create a list of keyInfo from a string, "keyname,kayvalue|keyname,keyvalue|"
@@ -54,9 +89,26 @@ public class UserRecord {
         KeyInfo keyInfo = new KeyInfo();
         StringTokenizer stringTokenizer = new StringTokenizer(keyString,",");
         while (stringTokenizer.hasMoreTokens()){
+            keyInfo.setKeyId(Long.parseLong(stringTokenizer.nextToken()));
             keyInfo.setKeyName(stringTokenizer.nextToken());
             keyInfo.setKeyValue(stringTokenizer.nextToken());
         }
         return keyInfo;
     }
+
+    public String getUserName() {return userName;}
+
+    public void setUserName(String userName) { this.userName = userName;}
+
+    public String getPassword() {return password;}
+
+    public void setPassword(String password) { this.password = password;}
+
+    public List getKeys() {return keys;}
+
+    public void setKeys(List keys) { this.keys = keys;}
+
+    public String getPersistenceInfo() {return persistenceInfo;}
+
+    public void setPersistenceInfo(String persistenceInfo) { this.persistenceInfo = persistenceInfo;}
 }

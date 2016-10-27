@@ -1,4 +1,4 @@
-package com.kami.app.key.persistence;
+package com.kami.app.key.utils;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -39,5 +39,10 @@ public class EncodeHelper {
         return decodedString;
     }
 
+    public static void main(String[] args){
+        EncodeHelper encodeHelper = new EncodeHelper();
+        System.out.println(encodeHelper.encode("MTIzNDU2"));
+        System.out.println(encodeHelper.decode(encodeHelper.encode("654321")));
+    }
 
 }

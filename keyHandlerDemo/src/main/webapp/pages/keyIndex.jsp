@@ -13,7 +13,7 @@
     <title>KeyIndex</title>
 </head>
 <body>
-    <jsp:useBean id="keyLists" scope="session" class="com.kami.app.key.model.KeyList"></jsp:useBean>
+    <jsp:useBean id="userKeys" scope="session" class="com.kami.app.key.model.UserKeys"></jsp:useBean>
     <h2>Key Information Lists Demo</h2>
     <hr size="4"/>
     <table frame="below" width="100%">
@@ -24,7 +24,7 @@
             <th></th>
         </tr>
         <%
-            List<KeyInfo> lists = keyLists.getList();
+            List<KeyInfo> lists = userKeys.getKeys();
             for (KeyInfo currentKey:
                  lists) {
                 %>

@@ -26,6 +26,8 @@ public class ActionFactory {
         defaultMap.put("addKey",AddKeyAction.class);
         defaultMap.put("removeKey",RemoveKeyAction.class);
         defaultMap.put("showKey",ShowKeyAction.class);
+        defaultMap.put("login",LoginAction.class);
+        defaultMap.put("logout",LogoutAction.class);
         //
         return defaultMap;
     }

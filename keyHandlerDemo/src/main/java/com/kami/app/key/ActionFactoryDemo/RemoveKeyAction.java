@@ -1,6 +1,6 @@
 package com.kami.app.key.ActionFactoryDemo;
 
-import com.kami.app.key.model.KeyList;
+import com.kami.app.key.model.UserKeys;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,12 +17,12 @@ public class RemoveKeyAction extends KeyAction{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String keyId = request.getParameter("keyId");
         HttpSession session = request.getSession();
-        KeyList keyList = (KeyList) session.getAttribute("keyLists");
+        UserKeys keyList = (UserKeys) session.getAttribute("userKeys");
         if (keyList == null){
-            keyList = new KeyList();
+            keyList = new UserKeys();
         }
-        keyList.removeKey(keyId);
-        session.setAttribute("keyLists",keyList);
+        keyList.removeKey(Long.parseLong(keyId));
+        session.setAttribute("userKeys",keyList);
         return "/pages/keyIndex.jsp";//the response page
     }
 }

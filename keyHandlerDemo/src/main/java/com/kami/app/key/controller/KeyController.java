@@ -16,7 +16,21 @@ import java.io.IOException;
 //@WebServlet(name = "KeyControler")
 public class KeyController extends HttpServlet {
 
+    public static int ServletCount = 0;
+    public static int ServiceCount = 0;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ServletCount++;
+        System.out.println("Init Method: ServeletCount " + ServletCount +
+        ",ServiceCount " + ServiceCount + "\n");
+    }
+
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ServiceCount++;
+        System.out.println("Service Method: ServeletCount " + ServletCount +
+                ",ServiceCount " + ServiceCount + "\n");
         String requestPath = request.getServletPath();
         System.out.println(requestPath);
         ActionFactory actionFactory = new ActionFactory();

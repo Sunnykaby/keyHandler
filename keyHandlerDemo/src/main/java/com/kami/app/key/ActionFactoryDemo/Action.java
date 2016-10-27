@@ -17,5 +17,9 @@ public interface Action {
      * @return
      *
      */
+    /**
+     * 这里也有一个技巧，就是在struts中常见的变量参数。
+     * 可以预先设定需要的参数列表。可以是参数名列表
+     */
     public String execute(HttpServletRequest request, HttpServletResponse response);
 }

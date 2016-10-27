@@ -1,7 +1,7 @@
 package com.kami.app.key.ActionFactoryDemo;
 
 import com.kami.app.key.model.KeyInfo;
-import com.kami.app.key.model.KeyList;
+import com.kami.app.key.model.UserKeys;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,12 +19,12 @@ public class AddKeyAction extends KeyAction{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         KeyInfo keyInfo = createByRequest(request);
         HttpSession session = request.getSession();
-        KeyList keyList = (KeyList) session.getAttribute("keyLists");
+        UserKeys keyList = (UserKeys) session.getAttribute("userKeys");
         if (keyList == null){
-            keyList = new KeyList();
+            keyList = new UserKeys();
         }
         keyList.addKey(keyInfo);
-        session.setAttribute("keyLists",keyList);
+        session.setAttribute("userKeys",keyList);
         return "/pages/keyIndex.jsp";//the response page
     }
 
