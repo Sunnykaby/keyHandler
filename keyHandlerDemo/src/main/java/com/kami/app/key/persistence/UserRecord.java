@@ -36,7 +36,10 @@ public class UserRecord {
         while (stringTokenizer.hasMoreTokens()){
             this.userName = stringTokenizer.nextToken();
             this.password = encodeHelper.decode(stringTokenizer.nextToken());
-            this.keys = createKeys(stringTokenizer.nextToken());
+            //must check is there any keys in dataSet
+            if (stringTokenizer.hasMoreTokens())
+                this.keys = createKeys(stringTokenizer.nextToken());
+            else this.keys = new ArrayList<KeyInfo>();
         }
     }
 
@@ -56,10 +59,9 @@ public class UserRecord {
         StringBuffer sb = new StringBuffer();
         for (Object key : keys) {
             KeyInfo keyInfo = (KeyInfo)key;
-            if (sb.length() > 0) sb.append("|");
             sb.append(keyInfo.getKeyId()).append(",");
             sb.append(keyInfo.getKeyName()).append(",");
-            sb.append(keyInfo.getKeyValue()).append(",");
+            sb.append(keyInfo.getKeyValue()).append("|");
         }
         return  sb.toString();
     }

@@ -21,7 +21,7 @@ public class LoginAction implements Action {
             // make some message to show that username and password is not correct
             session.setAttribute("message","The Name or Password may be not correct.");
             session.setAttribute("error","1");
-            return "/pages/login.jsp";
+            return "/pages/error.jsp";
         }
         else{
             session.setAttribute("user",userKeys);

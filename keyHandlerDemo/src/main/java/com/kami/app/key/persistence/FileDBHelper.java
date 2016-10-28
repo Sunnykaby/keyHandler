@@ -56,11 +56,12 @@ public class FileDBHelper {
      */
     public synchronized String retrieveData(){
         BufferedReader bufferedReader = null;
+        char[] charBuffer;
         try {
             //bufferedReader is more effective
             bufferedReader = new BufferedReader(new FileReader(db.getAbsolutePath()));
             //need a long enough char array, here we get length from a file object
-            char[] charBuffer = new char[(int) new File(db.getAbsolutePath()).length()];
+             charBuffer = new char[(int) new File(db.getAbsolutePath()).length()];
             bufferedReader.read(charBuffer);
         } catch (FileNotFoundException e) {
             //e.printStackTrace();
@@ -71,7 +72,7 @@ public class FileDBHelper {
         finally {
             closeReader(bufferedReader);
         }
-        return bufferedReader.toString();
+        return new String(charBuffer);
     }
 
     public void closeReader(BufferedReader bufferedReader){
@@ -110,7 +111,7 @@ public class FileDBHelper {
      * @return
      */
     public UserKeys getUserKey(String userName, String password){
-        String keyMap = userName + "!" + password;
+        String keyMap = userName + "-" + password;
         return (UserKeys) userKeysMap.get(keyMap);
     }
 

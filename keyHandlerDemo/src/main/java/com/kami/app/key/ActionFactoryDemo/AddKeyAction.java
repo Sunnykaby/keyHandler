@@ -19,12 +19,15 @@ public class AddKeyAction extends KeyAction{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         KeyInfo keyInfo = createByRequest(request);
         HttpSession session = request.getSession();
-        UserKeys keyList = (UserKeys) session.getAttribute("userKeys");
+        UserKeys keyList = (UserKeys) session.getAttribute("user");
         if (keyList == null){
             keyList = new UserKeys();
         }
         keyList.addKey(keyInfo);
-        session.setAttribute("userKeys",keyList);
+        session.setAttribute("user",keyList);
+        //syn the data to userDB data
+        //FileDBHelper temp = FileDBHelper.getInstance();
+        //FileDBHelper.getInstance().putUserKey(keyList);
         return "/pages/keyIndex.jsp";//the response page
     }
 

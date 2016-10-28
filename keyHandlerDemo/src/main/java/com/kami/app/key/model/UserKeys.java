@@ -19,16 +19,18 @@ public class UserKeys {
     public UserKeys() {
         this.userName = "";
         this.password = "";
-        this.keys = new ArrayList();
+        this.keys = new ArrayList<KeyInfo>();
     }
 
     public UserKeys(String userName, String password, List keys) {
         this.userName = userName;
         this.password = password;
-        if (keys != null)
+        if (this.keys != null)
             this.keys.addAll(keys);
         else {
-            this.keys = new ArrayList(keys);
+            if (keys!=null)
+                this.keys = new ArrayList<KeyInfo>(keys);
+            else this.keys = new ArrayList<KeyInfo>();
         }
     }
 

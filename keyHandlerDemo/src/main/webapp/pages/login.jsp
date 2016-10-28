@@ -12,11 +12,11 @@
 </head>
 <body>
     <div id="loginContener">
-        <filedset>
+        <fieldset>
             <legend>
                 Login
             </legend>
-            <form action="login.excute" id="login">
+            <form action="login.execute" id="login">
                 <table>
                     <tr>
                         <td>Name:</td>
@@ -29,9 +29,9 @@
                 </table>
                 <br>
                 <br>
-                <button type="submit" value="login"></button>
+                <button type="submit" >login</button>
             </form>
-        </filedset>
+        </fieldset>
     </div>
 </body>
 </html>

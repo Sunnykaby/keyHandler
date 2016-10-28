@@ -17,12 +17,14 @@ public class RemoveKeyAction extends KeyAction{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String keyId = request.getParameter("keyId");
         HttpSession session = request.getSession();
-        UserKeys keyList = (UserKeys) session.getAttribute("userKeys");
+        UserKeys keyList = (UserKeys) session.getAttribute("user");
         if (keyList == null){
             keyList = new UserKeys();
         }
         keyList.removeKey(Long.parseLong(keyId));
-        session.setAttribute("userKeys",keyList);
+        session.setAttribute("user",keyList);
+        //syn the data to dn
+        //FileDBHelper.getInstance().putUserKey(keyList);
         return "/pages/keyIndex.jsp";//the response page
     }
 }

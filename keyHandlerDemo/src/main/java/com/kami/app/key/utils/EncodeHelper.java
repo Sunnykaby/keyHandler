@@ -41,8 +41,8 @@ public class EncodeHelper {
 
     public static void main(String[] args){
         EncodeHelper encodeHelper = new EncodeHelper();
-        System.out.println(encodeHelper.encode("MTIzNDU2"));
-        System.out.println(encodeHelper.decode(encodeHelper.encode("654321")));
+        System.out.println(encodeHelper.encode("654321"));
+        System.out.println(encodeHelper.decode("TVRJek5EVTI"));
     }
 
 }

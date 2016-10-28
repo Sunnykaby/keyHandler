@@ -12,6 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ShowKeyAction extends KeyAction{
 
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return "/pages/keyIndex.jsp";//the response page
+        return "/pages/login.jsp";//the response page
     }
 }

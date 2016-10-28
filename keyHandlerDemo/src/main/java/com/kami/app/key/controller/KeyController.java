@@ -2,6 +2,7 @@ package com.kami.app.key.controller;
 
 import com.kami.app.key.ActionFactoryDemo.Action;
 import com.kami.app.key.ActionFactoryDemo.ActionFactory;
+import com.kami.app.key.persistence.FileDBHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +20,31 @@ public class KeyController extends HttpServlet {
     public static int ServletCount = 0;
     public static int ServiceCount = 0;
 
+    /**
+     * servlet when first loaded in memory space, we should get the data from the file
+     * @throws ServletException
+     */
     @Override
     public void init() throws ServletException {
         super.init();
         ServletCount++;
         System.out.println("Init Method: ServeletCount " + ServletCount +
         ",ServiceCount " + ServiceCount + "\n");
+        //get the file path
+        String path = getServletContext().getRealPath("");
+        System.out.println(path);
+        FileDBHelper.getInstance().setDbBasePath(path);
+        //init the data
+        FileDBHelper.getInstance().initializeInfo();
+    }
+
+    /**
+     * here it should close the file and make sure that the data in the memory must be persisted into file
+     */
+    @Override
+    public void destroy() {
+        super.destroy();
+        FileDBHelper.getInstance().closeDB();
     }
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

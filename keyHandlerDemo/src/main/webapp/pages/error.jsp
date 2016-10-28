@@ -12,6 +12,7 @@
 </head>
 <body>
 <%=session.getAttribute("message")%>
-
+<br>
+<div><a href="index.execute">Back to the Login</a></div>
 </body>
 </html>
